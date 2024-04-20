@@ -9,7 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./screens/allroutes";
 import LetsGetStartedScreen from "./screens/LetsGetStartedScreen";
-import AppLoading from "expo-app-loading";
+import * as SplashScreen from 'expo-splash-screen';
 import { createDrawerNavigator, DrawerContent, DrawerItem, DrawerItemList, DrawerContentScrollView } from '@react-navigation/drawer';
 
 
@@ -58,7 +58,7 @@ import PaymentPage from './screens/BillPayment/PaymentPage';
 
 
 import { store } from './state/store';
-import {Provider} from "react-redux"
+import { Provider } from "react-redux"
 import CustomDrawer from './CustomDrawer';
 import LowerDrawer from './LowerDrawer';
 
@@ -85,8 +85,8 @@ import {
 } from "@expo-google-fonts/poppins";
 import TransferType from './screens/Transfer/TransferType';
 import TransferScreen from './screens/Transfer/TransferScreen';
-import Notifications from './components/dashboard/Notifications';
-import ViewAllScreen from './components/dashboard/ViewAllScreen';
+import Notifications from './components/dashboardComp/Notifications';
+import ViewAllScreen from './components/dashboardComp/ViewAllScreen';
 import CAccLandingPage from './screens/CAccLandingPage';
 import AccountTypeCategory from "./screens/AccountTypeCategory";
 import AccountServices from "./screens/AccountServices"
@@ -95,9 +95,10 @@ import ChooseBeneficiary from './screens/Transfer/ChooseBeneficiary';
 
 
 
-
+SplashScreen.preventAutoHideAsync();
 
 function ProfileDrawer() {
+    
     const Drawer = createDrawerNavigator()
 
     return (
@@ -109,7 +110,7 @@ function ProfileDrawer() {
                 screenOptions={{
                     drawerStyle: {
                         width: '60%',
-                        
+
                     },
                     drawerActiveTintColor: "white",
                 }}
@@ -121,10 +122,10 @@ function ProfileDrawer() {
                     component={DashBoard}
                     options={{
                         drawerType: 'front',
-                        drawerLabelStyle: {fontSize:10, color: "white"},
+                        drawerLabelStyle: { fontSize: 10, color: "white" },
                         title: "dashboard",
                         headerShown: false,
-                       
+
                     }}
                 />
 
@@ -134,9 +135,9 @@ function ProfileDrawer() {
                     component={ProfileScreen}
                     options={{
                         headerShown: false,
-                       
+
                         drawerIcon: () =>
-                            <Ionicons name="md-person-outline"
+                            <Ionicons name="person-outline"
                                 size={30}
                                 color="black" />
 
@@ -209,11 +210,11 @@ function ProfileDrawer() {
                     name="LoanDash"
                     component={LoanDash}
                     options={{
-                        title:"Loan",
+                        title: "Loan",
                         headerShown: false,
                         drawerIcon: () =>
                             <Ionicons
-                                name="md-newspaper-outline"
+                                name="newspaper-outline"
                                 size={30}
                                 color="black"
                             />
@@ -256,213 +257,214 @@ function App() {
     });
 
     if (!fontsLoaded) {
-        return <AppLoading />;
+        
+        SplashScreen.hideAsync();
     }
     return (
         <Provider
-        store={store}
+            store={store}
         >
 
-       
 
 
-        <SafeAreaProvider>
-            <StatusBar />
 
-            <NavigationContainer>
-                <Stack.Navigator
-                    screenOptions={{ headerShown: false }}
+            <SafeAreaProvider>
+                <StatusBar />
 
-                    initialRouteName="GettingStarted"
-                >
+                <NavigationContainer>
+                    <Stack.Navigator
+                        screenOptions={{ headerShown: false }}
 
-                    <Stack.Screen
-                        name="GettingStarted"
-                        component={GettingStartedScreen}
-                    />
-                    <Stack.Screen
-                        name="LetsGetStarted"
-                        component={LetsGetStartedScreen}
-                    />
+                        initialRouteName="GettingStarted"
+                    >
 
-                    <Stack.Screen
-                    name="SignIn"
-                    component={SignInScreen}
-                    />
-                    <Stack.Screen
-                        name="SetProfile"
-                        component={SetProfileScreen}
-                    />
-                    <Stack.Screen
-                        name="CAccLandingPage"
-                        component={CAccLandingPage}
-                    />
-                    <Stack.Screen
-                        name="CreateYourAccount"
-                        component={CreateYourAccount}
-                    />
-                    <Stack.Screen
-                        name="PersonalInfo"
-                        component={PersonalInfoScreen}
-                    />
-                    <Stack.Screen
-                        name="AccountTypeSetup"
-                        component={AccountTypeSetup}
-                    />
-                    <Stack.Screen
-                        name="AccountTypeCategory"
-                        component={AccountTypeCategory}
-                    />
-                    <Stack.Screen
+                        <Stack.Screen
+                            name="GettingStarted"
+                            component={GettingStartedScreen}
+                        />
+                        <Stack.Screen
+                            name="LetsGetStarted"
+                            component={LetsGetStartedScreen}
+                        />
+
+                        <Stack.Screen
+                            name="SignIn"
+                            component={SignInScreen}
+                        />
+                        <Stack.Screen
+                            name="SetProfile"
+                            component={SetProfileScreen}
+                        />
+                        <Stack.Screen
+                            name="CAccLandingPage"
+                            component={CAccLandingPage}
+                        />
+                        <Stack.Screen
+                            name="CreateYourAccount"
+                            component={CreateYourAccount}
+                        />
+                        <Stack.Screen
+                            name="PersonalInfo"
+                            component={PersonalInfoScreen}
+                        />
+                        <Stack.Screen
+                            name="AccountTypeSetup"
+                            component={AccountTypeSetup}
+                        />
+                        <Stack.Screen
+                            name="AccountTypeCategory"
+                            component={AccountTypeCategory}
+                        />
+                        <Stack.Screen
                             name="AccountServices"
                             component={AccountServices}
-                    />
-                    <Stack.Screen
-                        name="ForgotPassword"
-                        component={ForgotPasswordScreen}
-                    />
-                    <Stack.Screen
-                        name="EnterCode"
-                        component={EnterCodeScreen}
-                    />
-                    <Stack.Screen
-                        name="ResetPassword"
-                        component={ResetPasswordScreen}
-                    />
+                        />
+                        <Stack.Screen
+                            name="ForgotPassword"
+                            component={ForgotPasswordScreen}
+                        />
+                        <Stack.Screen
+                            name="EnterCode"
+                            component={EnterCodeScreen}
+                        />
+                        <Stack.Screen
+                            name="ResetPassword"
+                            component={ResetPasswordScreen}
+                        />
 
-                    <Stack.Screen
-                        name="Verification"
-                        component={VerificationScreen}
-                        options={{ gestureEnabled: false }}
-                    />
+                        <Stack.Screen
+                            name="Verification"
+                            component={VerificationScreen}
+                            options={{ gestureEnabled: false }}
+                        />
 
-                    <Stack.Screen
-                        name="DashBoard"
-                        component={ProfileDrawer}
-                    />
-                    <Stack.Screen
-                        name="Notifications"
-                        component={Notifications}
-                    />
-                    <Stack.Screen
-                        name="ViewAllScreen"
-                        component={ViewAllScreen}
-                    />
+                        <Stack.Screen
+                            name="DashBoard"
+                            component={ProfileDrawer}
+                        />
+                        <Stack.Screen
+                            name="Notifications"
+                            component={Notifications}
+                        />
+                        <Stack.Screen
+                            name="ViewAllScreen"
+                            component={ViewAllScreen}
+                        />
 
-                    <Stack.Screen
-                        name="Profile"
-                        component={ProfileScreen}
-                        options={{
-                            headerShown: false,
+                        <Stack.Screen
+                            name="Profile"
+                            component={ProfileScreen}
+                            options={{
+                                headerShown: false,
 
-                        }}
-                    />
-                    <Stack.Screen
-                        name="EditPersonalInfo"
-                        component={EditPersonalInfoScreen}
-                    />
-                    <Stack.Screen
-                        name="EditContactDetails"
-                        component={EditContactDetails}
-                    />
-                    <Stack.Screen
+                            }}
+                        />
+                        <Stack.Screen
+                            name="EditPersonalInfo"
+                            component={EditPersonalInfoScreen}
+                        />
+                        <Stack.Screen
+                            name="EditContactDetails"
+                            component={EditContactDetails}
+                        />
+                        <Stack.Screen
 
-                        name='MeansOfId'
-                        component={MeansOfId}
-                    />
+                            name='MeansOfId'
+                            component={MeansOfId}
+                        />
 
-                    <Stack.Screen
-                        name='ProofOfAddress'
-                        component={ProofOfAddress}
-                    />
-                    <Stack.Screen
-                        name='EditEmployment'
-                        component={EditEmployment}
-                    />
-                    <Stack.Screen
-                        name='EditNextofKin'
-                        component={EditNextofKin}
-                    />
-
-
-                    <Stack.Screen
-                        name="TransferType"
-                        component={TransferType}
-                    />
-                    <Stack.Screen
-                        name="Transfer"
-                        component={TransferScreen}
-                    />
-                    <Stack.Screen
-                        name="ChooseBeneficiary"
-                        component={ChooseBeneficiary}
-                    />
-                    <Stack.Screen
-                        name="LoanDash"
-                        component={LoanDash}
-                    />
-                    <Stack.Screen
-                        name='LoanTransaction'
-                        component={LoanTransaction}
-                    />
-                    <Stack.Screen name="Success" 
-                    component={SuccessScreen} />
-                    <Stack.Screen
-                        name='LoanRepayment'
-                        component={LoanRepayment}
-
-                    />
-                    <Stack.Screen
-                        name='LoanRepaymentDet'
-                        component={LoanRepaymentDet}
-
-                    />
-                    <Stack.Screen
-                        name='LoanProducts'
-                        component={LoanProducts}
-                    />
-                    <Stack.Screen
-                        name='LoanApplication'
-                        component={LoanApplication}
-                    />
-                    <Stack.Screen
-
-                        name='SelfService'
-                        component={SelfService}
-                    />
-                    <Stack.Screen name="Airtime" component={AirtimeScreen} />
-                    <Stack.Screen name="BillPayment" component={BillPaymentScreen} />
-                    <Stack.Screen name="CableTv" component={CableTv} />
-                    <Stack.Screen name="InternetServices" component={InternetServices} />
-                    <Stack.Screen name="Utility" component={Utility} />
-                    <Stack.Screen name="Insurance" component={Insurance} />
-                    <Stack.Screen name="PaymentPage" component={PaymentPage} />
-                    <Stack.Screen
-                    name='LinkBvn'
-                    component={LinkBvn}
-                    
-                    />
-
-                    <Stack.Screen
-                    name="StatementofAccount"
-                    component={StatementofAccount}
-                    />
+                        <Stack.Screen
+                            name='ProofOfAddress'
+                            component={ProofOfAddress}
+                        />
+                        <Stack.Screen
+                            name='EditEmployment'
+                            component={EditEmployment}
+                        />
+                        <Stack.Screen
+                            name='EditNextofKin'
+                            component={EditNextofKin}
+                        />
 
 
-                </Stack.Navigator>
+                        <Stack.Screen
+                            name="TransferType"
+                            component={TransferType}
+                        />
+                        <Stack.Screen
+                            name="Transfer"
+                            component={TransferScreen}
+                        />
+                        <Stack.Screen
+                            name="ChooseBeneficiary"
+                            component={ChooseBeneficiary}
+                        />
+                        <Stack.Screen
+                            name="LoanDash"
+                            component={LoanDash}
+                        />
+                        <Stack.Screen
+                            name='LoanTransaction'
+                            component={LoanTransaction}
+                        />
+                        <Stack.Screen name="Success"
+                            component={SuccessScreen} />
+                        <Stack.Screen
+                            name='LoanRepayment'
+                            component={LoanRepayment}
+
+                        />
+                        <Stack.Screen
+                            name='LoanRepaymentDet'
+                            component={LoanRepaymentDet}
+
+                        />
+                        <Stack.Screen
+                            name='LoanProducts'
+                            component={LoanProducts}
+                        />
+                        <Stack.Screen
+                            name='LoanApplication'
+                            component={LoanApplication}
+                        />
+                        <Stack.Screen
+
+                            name='SelfService'
+                            component={SelfService}
+                        />
+                        <Stack.Screen name="Airtime" component={AirtimeScreen} />
+                        <Stack.Screen name="BillPayment" component={BillPaymentScreen} />
+                        <Stack.Screen name="CableTv" component={CableTv} />
+                        <Stack.Screen name="InternetServices" component={InternetServices} />
+                        <Stack.Screen name="Utility" component={Utility} />
+                        <Stack.Screen name="Insurance" component={Insurance} />
+                        <Stack.Screen name="PaymentPage" component={PaymentPage} />
+                        <Stack.Screen
+                            name='LinkBvn'
+                            component={LinkBvn}
+
+                        />
+
+                        <Stack.Screen
+                            name="StatementofAccount"
+                            component={StatementofAccount}
+                        />
 
 
-
-
-
-            </NavigationContainer>
+                    </Stack.Navigator>
 
 
 
 
 
+                </NavigationContainer>
 
-        </SafeAreaProvider>
+
+
+
+
+
+            </SafeAreaProvider>
         </Provider>
     );
 }

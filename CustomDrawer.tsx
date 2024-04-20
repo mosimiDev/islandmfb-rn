@@ -43,7 +43,7 @@ function CustomDrawer(props: any) {
                 <View
                     style={apptw`bg-transparent rounded-full  mx-auto`}
                 >
-                    <Ionicons name="md-person-outline"
+                    <Ionicons name="person-outline"
                         size={50}
                         color="black" />
                 </View>

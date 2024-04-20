@@ -704,5 +704,11 @@ myfunc()
 
 
 
+
 // to test run
+// cd utils
+// cd requests
 // ts-node ./authReq.ts
+
+// simiA
+// hello123

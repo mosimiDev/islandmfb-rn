@@ -2,14 +2,15 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import authReducer from './authSlice'
 import airtimeReducer from "./airtimeSlice";
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const rootReducer = combineReducers({
 
     auth: persistReducer(
         {
             key: "auth",
-            storage,
+            storage: AsyncStorage,
             blacklist: ["isLoading", "errorMessage", "isError", "isSuccess"],
         },
         authReducer
@@ -21,7 +22,7 @@ const rootReducer = combineReducers({
 const presistedReducer = persistReducer(
     {
         key: "root",
-        storage
+        storage: AsyncStorage,
     },
     rootReducer,
 

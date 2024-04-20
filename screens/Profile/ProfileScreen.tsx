@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 
 type ProfileProps = NativeStackScreenProps<RootStackParamList, "Profile">;
 
-const ProfileScreen = ({navigation}: ProfileProps) => {
+const ProfileScreen = ({ navigation }: ProfileProps) => {
 
 
     const { user } = useSelector(authSelector)
@@ -24,30 +24,30 @@ const ProfileScreen = ({navigation}: ProfileProps) => {
 
     let fName = (user?.name)?.split(/\s+/)
 
-    const navigatetoEditPersonalInfo =()=> {
-    navigation.navigate("EditPersonalInfo")
-}
+    const navigatetoEditPersonalInfo = () => {
+        navigation.navigate("EditPersonalInfo")
+    }
 
-const navigatetoEditContactDetails =()=>{
-    navigation.navigate("EditContactDetails")
-}
+    const navigatetoEditContactDetails = () => {
+        navigation.navigate("EditContactDetails")
+    }
 
-const navigatetoMeansOfId =()=>{
-    navigation.navigate("MeansOfId")
-}
+    const navigatetoMeansOfId = () => {
+        navigation.navigate("MeansOfId")
+    }
 
-const navigatetoProofOfAddress=()=>{
-    navigation.navigate("ProofOfAddress")
-}
+    const navigatetoProofOfAddress = () => {
+        navigation.navigate("ProofOfAddress")
+    }
 
-const navigatetoEditEmployment =()=>{
-    navigation.navigate("EditEmployment")
-}
+    const navigatetoEditEmployment = () => {
+        navigation.navigate("EditEmployment")
+    }
 
 
-const navigatetoEditNextofKin =()=>{
-    navigation.navigate("EditNextofKin")
-}
+    const navigatetoEditNextofKin = () => {
+        navigation.navigate("EditNextofKin")
+    }
 
     return (
         <BasicBackButtonLayout>
@@ -65,11 +65,11 @@ const navigatetoEditNextofKin =()=>{
                     style={apptw`mx-auto pt-5`}
                 >
                     <View
-                    style={apptw`bg-transparent rounded-full p-10`}
+                        style={apptw`bg-transparent rounded-full p-10`}
                     >
-                    <Ionicons name="md-person-outline"
-                        size={50}
-                        color="black" />
+                        <Ionicons name="person-outline"
+                            size={50}
+                            color="black" />
                     </View>
                 </View>
 
@@ -80,7 +80,7 @@ const navigatetoEditNextofKin =()=>{
                     <AppText
                         style={apptw`font-bold text-2xl text-center`}
                     >
-                       {fName?.[0]} {fName?.[2]}
+                        {fName?.[0]} {fName?.[2]}
 
                     </AppText>
                     <AppText
@@ -121,7 +121,7 @@ const navigatetoEditNextofKin =()=>{
                                 color="black"
                                 size={24}
                             />
-                    }
+                        }
                     />
 
 
@@ -136,7 +136,7 @@ const navigatetoEditNextofKin =()=>{
                                 color="black"
                                 size={24}
                             />
-                    }
+                        }
                     />
 
 
@@ -153,7 +153,7 @@ const navigatetoEditNextofKin =()=>{
                                 color="black"
                                 size={24}
                             />
-                    }
+                        }
                     />
 
                     <AppButtonWIcon
@@ -167,7 +167,7 @@ const navigatetoEditNextofKin =()=>{
                                 color="black"
                                 size={24}
                             />
-                    }
+                        }
                     />
 
                     <AppButtonWIcon
@@ -181,7 +181,7 @@ const navigatetoEditNextofKin =()=>{
                                 color="black"
                                 size={24}
                             />
-                    }
+                        }
                     />
 
                 </View>

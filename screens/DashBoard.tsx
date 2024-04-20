@@ -23,7 +23,7 @@ import AppButtonWIcon from "../components/shared/AppButtonWIcon";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import TransHistory from "../components/dashboard/TransHistory";
+import TransHistory from "../components/dashboardComp/TransHistory";
 import LowerDrawer, { LowerDrawerRefProps } from "../LowerDrawer";
 import { useSelector } from "react-redux";
 import { authSelector } from "../state/authSlice";
@@ -119,7 +119,7 @@ const DashBoard = ({ navigation }: DashBoardProps) => {
                 <LoggedInLayout>
                     <View
                         style={tw`px-5`}
-                        >
+                    >
 
 
 
@@ -150,20 +150,20 @@ const DashBoard = ({ navigation }: DashBoardProps) => {
                                         <AppText style={tw`text-red-500 px-3 `}>{user.accountNo}</AppText>
                                     </View>
                                     <View style={apptw`flex px-5`}>
-                                    <AppText style={tw`text-2xl font-bold`}>{user.currency} {user.availableBalance}</AppText>
-                                        <AppText style={apptw`font-base `}>Available Balance</AppText>
+                                        <AppText style={tw`text-2xl font-bold`}>{user.currency} {user.availableBalance}</AppText>
+                                        <AppText style={apptw`text-base `}>Available Balance</AppText>
                                     </View>
                                 </PressAppText>
 
                                 {/* Savings Account */}
                                 <PressAppText style={apptw`bg-stone-300 mt-5`}>
                                     <View style={apptw`flex-row pt-5 px-5 `}>
-                                        <AppText> {user.product }</AppText>
+                                        <AppText> {user.product}</AppText>
                                         <AppText style={tw`text-red-500 px-3`}>{user.accountNo}</AppText>
                                     </View>
                                     <View style={apptw`flex px-5`}>
                                         <AppText style={tw`text-2xl font-bold`}>{user.currency} {user.availableBalance}</AppText>
-                                        <AppText style={apptw`font-base `}>Available Balance</AppText>
+                                        <AppText style={apptw`text-base `}>Available Balance</AppText>
                                     </View>
                                 </PressAppText>
                             </View>
@@ -175,7 +175,7 @@ const DashBoard = ({ navigation }: DashBoardProps) => {
                             style={apptw`bg-textField px-5 py-5 pl-5 mt-10 `}
                         >
                             <AppText
-                                style={apptw`font-base `}
+                                style={apptw`text-base `}
                             >
                                 {user.product + ":" + " "}
                                 <AppText
@@ -260,7 +260,7 @@ const DashBoard = ({ navigation }: DashBoardProps) => {
                                     textStyle={apptw`text-[3] text-primCol mx-auto`}
                                     icon={
                                         <Ionicons
-                                            name="md-newspaper-outline"
+                                            name="newspaper-outline"
                                             size={15}
                                             style={tw`mx-auto`}
                                             color="#BC4B52"
@@ -298,7 +298,7 @@ const DashBoard = ({ navigation }: DashBoardProps) => {
                         </View>
 
 
-                        {transActs.slice(0,2).map((transAct) => (
+                        {transActs.slice(0, 2).map((transAct) => (
                             <View
                                 key={transAct.id}
                             >

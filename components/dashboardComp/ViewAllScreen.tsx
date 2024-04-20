@@ -6,7 +6,7 @@ import AppText from '../shared/Apptext';
 import BasicBackButtonLayout from "../layouts/BasicBackButtonLayout";
 import { useSelector } from "react-redux";
 import { authSelector } from "../../state/authSlice";
-import TransHistory from "../dashboard/TransHistory";
+import TransHistory from "./TransHistory";
 
 type ViewAllTransacts = {
   id: number,
@@ -53,7 +53,7 @@ const ViewAllScreen = () => {
       try {
         const responseJson = await response.json();
         setFullTransActs(responseJson);
-      
+
       }
       catch (err) {
         console.error(err);
@@ -78,7 +78,7 @@ const ViewAllScreen = () => {
         <TransHistory amount={"90"} date={"2003-01-05"} details={"TRANS. TO DORMANT A/C"} name={user.name} />
         <TransHistory amount={"30"} date={"2003-05-01"} details={"TRANS. TO DORMANT A/C"} name={user.name} />
         <TransHistory amount={"0.74"} date={"2003-01-01"} details={"TRANS. TO DORMANT A/C"} name={user.name} />
-        
+
       </View>
 
     </BasicBackButtonLayout>
