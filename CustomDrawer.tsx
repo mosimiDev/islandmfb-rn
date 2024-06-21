@@ -8,13 +8,22 @@ import { authSelector, setAuthStateTokens } from "./state/authSlice";
 import { logOut } from "./state/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "./state/store";
+import { useNavigation } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+
+// import { combineTokens } from "./utils/lib/tailwind";
 
 
 function CustomDrawer(props: any) {
     const { user } = useSelector(authSelector)
     const dispatch = useDispatch<AppDispatch>();
-    const handleLogOut=()=>{dispatch(setAuthStateTokens)}
+    const handleLogOut = ({ navigation }: { navigation: any }) => {  
+        dispatch(logOut({ accessToken: "" }))
+        navigation.navigate("SignIn")
+    }
+    
+    
+    const navigation = useNavigation();
 
     let fName = (user?.name)?.split(/\s+/)
 
@@ -74,7 +83,7 @@ function CustomDrawer(props: any) {
                 style={apptw``}
             >
                 <AppButtonWIcon
-                    onPress={handleLogOut}
+                    onPress={() => handleLogOut({ navigation: props.navigation })}
                     buttonStyle={apptw`bg-white`}
                     textStyle={apptw`font-light text-center`}
                     text="Logout"

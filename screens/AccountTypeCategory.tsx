@@ -15,9 +15,11 @@ type AccountTypeCategoryProps = NativeStackScreenProps<
  "AccountTypeCategory"
  >;
 const AccountTypeCategory = ({ navigation }: AccountTypeCategoryProps) => {
+
  const navigateToAccService = () => {
   navigation.navigate("AccountServices")
  }
+ 
  return (
   <BasicBackButtonLayout>
    <View style={apptw`mx-6`}>

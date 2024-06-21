@@ -8,12 +8,15 @@
       "distribution": "internal"
     },
     "preview": {
+       "channel": "preview",
       "ios": {
         "simulator": true
       },
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "channel": "production"
+    }
   },
   "submit": {
     "production": {}

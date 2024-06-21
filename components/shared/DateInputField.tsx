@@ -21,7 +21,8 @@ type DateInputFieldProps = {
 };
 
 const DateInputField = (props: DateInputFieldProps) => {
-    const [date, setDate] = useState(new Date(1598051730000))
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
 
 
@@ -32,18 +33,24 @@ const DateInputField = (props: DateInputFieldProps) => {
     };
 
     const showMode = (currentMode: any) => {
-        DateTimePickerAndroid.open({
-            value: date,
-            onChange,
-            mode: "date",
-            is24Hour: false,
+        setShow(true);
+        setMode(currentMode);
+        // DateTimePickerAndroid.open({
+        //     value: date,
+        //     onChange,
+        //     mode: "date",
+        //     is24Hour: false,
 
-        });
+        // });
     };
 
     const ShowDatepicker = () => {
         showMode('date')
-    }
+    };
+
+    const showTimepicker = () => {
+        showMode('time')
+    };
     return (
         <View>
 
@@ -62,6 +69,7 @@ const DateInputField = (props: DateInputFieldProps) => {
 
 
             >
+                
 
                 <AppText
                     style={tw.style(
@@ -72,8 +80,18 @@ const DateInputField = (props: DateInputFieldProps) => {
                     fontFamily="poppins"
                 >
 
-                    {/* {date.toDateString()} */}
-                    {date.getDate()}/{date.getMonth()}/{date.getFullYear()}
+                    <DateTimePicker
+                        testID="dateTimePicker"
+                        value={date}
+                        mode={mode === 'date' ? 'date' : mode === 'time' ? 'time' : undefined}
+                        is24Hour={true}
+                        onChange={onChange}
+                        style={tw.style(
+                            `text-base  text-black`,
+                            props?.textStyle
+
+                        )}
+                    />
                     
 
 

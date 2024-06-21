@@ -9,6 +9,7 @@ export type RootStackParamList = {
     AccountTypeSetup: undefined;
     TransferType: undefined;
     Transfer: undefined;
+    Drawer: undefined;
     ChooseBeneficiary: undefined;
     DashBoard: undefined;
     Profile: undefined;

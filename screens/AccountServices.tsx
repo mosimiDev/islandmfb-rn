@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import apptw from "../utils/lib/tailwind";
 import AppText from "../components/shared/Apptext";
@@ -20,7 +20,7 @@ const AccountServices = ({ navigation }: AccountServicesProps) => {
    successMessage:
     "You have successfully signed up your account in our app and can start using",
    canGoBack: false,
-   nextPage: "LetsGetStarted",
+   nextPage: "SignIn",
    successButtonText: "Start Using",
    nextPageParams: undefined,
   });
@@ -35,15 +35,15 @@ const AccountServices = ({ navigation }: AccountServicesProps) => {
      <AppText style={apptw`my-3`}>
       Please select from the options below the services you will require for the opening of your account
      </AppText>
-     <View style={apptw`flex`}>
+     <View style={styles.row}>
       <Checkbox
-       label="sms"
+       label="  sms"
       />
       <Checkbox
-       label="Credit only"
+       label="  Credit "
       />
       <Checkbox
-       label="Debit only"
+       label="  Email "
       />
      </View>
      <AppButton text="Submit Application" onPress={onSubmit} />
@@ -52,4 +52,21 @@ const AccountServices = ({ navigation }: AccountServicesProps) => {
   </>
  );
 };
+
+const styles = StyleSheet.create({
+ container: {
+  flex: 1,
+  justifyContent: "center",
+ },
+ row: {
+  flexDirection: "row",
+  backgroundColor: "#fff",
+  alignItems: "center",
+  padding: 16,
+ },
+ label: {
+  flex: 1,
+  paddingHorizontal: 16,
+ },
+});
 export default AccountServices;

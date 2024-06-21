@@ -52,11 +52,11 @@ export const loginUser = createAsyncThunk(
 
                 )
                 console.log("connect successful ")
-                
+
                 // const getRefreshToken = await authRequest.getUserKeyCloak(tokenResponse.data.refresh_token);
-                
+
                 // dispatch({ type:"auth/loginUser", refresh_token:{getRefreshToken}})
-                
+
                 // console.log(getRefreshToken.status)
                 //use access token to get user info 
                 // const token = await SecureStorage.getInst().getValueFor("access_token")
@@ -134,7 +134,7 @@ const UserInformation = (
     state: AuthState,
     allUserInformation: UserFull
 ) => {
-    
+
     state.user.name = allUserInformation[0].customerName;
     state.user.accountNo = allUserInformation[0].primaryAccountNo["_number"];
     state.user.product = allUserInformation[0].product;
@@ -163,10 +163,22 @@ const authSlice = createSlice({
         clearAuthState(state: AuthState) {
             return initialState;
         },
-        logOut(state: AuthState, action: PayloadAction<{accessToken:string}>) {
-            state.accessToken = null
-            localStorage.clear()
-        }
+        logOut(state: AuthState, action: PayloadAction<{ accessToken: string }>) {
+            if (state.accessToken) {
+                localStorage.removeItem(action.payload.accessToken);
+                state.accessToken = null;
+                state.user = {
+                    bookBalance: null,
+                    currency: null,
+                    availableBalance: null,
+                    product: null,
+                    accountNo: "",
+                    name: null,
+                    customerNo: null,
+                };
+            }
+            }
+        
 
 
     },
@@ -201,7 +213,17 @@ const authSlice = createSlice({
                     ?.allUserInformation as UserFull;
                 return UserInformation(state, allUserInformation);
             })
-            // .addCase(loginUser.fulfilled, (state:AuthState, action: PayloadAction<{ refreshToken: string }>)=>{})
+            // .addCase(loginUser.fulfilled, (state, action) => {
+            //     // when login is successful
+            //     state.isLoading = false;
+            //     state.isError = false;
+            //     state.isSuccess = true;
+            //     state.loginErrorMessage = "";
+            //     console.log(action.payload);
+            //     const allUserInformation = action.payload.allUserInformation as UserFull;
+            //     return UserInformation(state, allUserInformation);
+            // })
+        // .addCase(loginUser.fulfilled, (state:AuthState, action: PayloadAction<{ refreshToken: string }>)=>{})
 
     },
 

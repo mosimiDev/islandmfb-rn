@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/60a50835-a717-4615-ba7e-19065a7ab147"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -35,6 +36,13 @@
       "eas": {
         "projectId": "60a50835-a717-4615-ba7e-19065a7ab147"
       }
-    }
+    },
+    "runtimeVersion": {
+      "policy": "nativeVersion"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store"
+    ]
   }
 }

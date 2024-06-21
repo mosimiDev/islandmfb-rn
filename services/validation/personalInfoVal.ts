@@ -19,7 +19,7 @@ export const personalInfoSchema = z
         }),
 
         dob: z.string({
-            required_error: " Please Input Your Gender"
+            required_error: " Please Input a Valid Date of Birth"
         })
 
     })
